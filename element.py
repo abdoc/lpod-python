@@ -56,6 +56,7 @@ ODF_NAMESPACES = {
     'number': "urn:oasis:names:tc:opendocument:xmlns:datastyle:1.0",
     'of': "urn:oasis:names:tc:opendocument:xmlns:of:1.2",
     'office': "urn:oasis:names:tc:opendocument:xmlns:office:1.0",
+    'officeooo': 'http://openoffice.org/2009/office',
     'ooo': "http://openoffice.org/2004/office",
     'oooc': "http://openoffice.org/2004/calc",
     'ooow': "http://openoffice.org/2004/writer",
