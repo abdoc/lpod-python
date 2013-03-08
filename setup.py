@@ -39,7 +39,7 @@ from release import has_git, get_release, get_git_files
 if has_git():
     # Make the version.txt file
     release = get_release()
-    open('version.txt', 'w').write(release)
+    open('version.txt', 'w').write(release[1:])
     # Make the MANIFEST file and search for the data
     filenames = get_git_files()
     filenames = [ name for name in filenames if not name.startswith('test') ]
@@ -53,21 +53,26 @@ else:
 data_files = [ name for name in filenames if not name.endswith('.py') ]
 
 # Find all the scripts => It's easy: all the files in scripts/
-scripts = [ join('scripts', filename) for filename in listdir('scripts') ]
+scripts_base_path = join('lpod', 'scripts')
+scripts = [ join(scripts_base_path, filename) for filename in listdir(scripts_base_path) ]
 scripts = [ name for name in scripts if name in filenames ]
 
 # Make the python_path.txt file
 open('python_path.txt', 'w').write(executable)
 
-# And call core.setup ....
-core.setup(description='lpOD Library',
-           license='GPLv3 + Apache v2',
-           name='lpod-python',
-           package_data={'lpod': data_files},
-           package_dir={'lpod': '.'},
-           scripts=scripts,
-           packages=['lpod'],
-           url='http://www.lpod-project.org/',
-           version=release,
-           author="lpOD Team",
-           author_email="team@lpod-project.org")
+core.setup(
+	description='lpOD Library',
+	license='GPLv3 + Apache v2',
+	name='lpod-python',
+	package_data={'lpod': data_files},
+	scripts=scripts,
+	install_requires=[
+        'lxml>=3.0',
+        'scriptutils>=0.9.4'
+    ],
+	packages=['lpod'],
+	url='http://www.lpod-project.org/',
+	version=release,
+	author="lpOD Team",
+	author_email="team@lpod-project.org"
+)

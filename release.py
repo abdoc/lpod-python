@@ -29,9 +29,7 @@
 from subprocess import Popen, PIPE
 from sys import argv
 from os.path import basename, exists
-
-# Import from lpod
-from scriptutils import printerr
+import sys
 
 
 try:
@@ -89,4 +87,4 @@ if __name__ == '__main__':
     try:
         print get_release()
     except:
-        printerr('%s: unable to read info' % basename(argv[0]))
+        sys.stderr.write('%s: unable to read info\n' % basename(argv[0]))
