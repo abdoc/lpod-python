@@ -1,10 +1,8 @@
-MANIFEST
-version.txt
 python_path.txt
 build
 doc_make/autodocs
 dist
-test/trash
+lpod/test/trash
 *.swp
 *.py[co]
 .buildinfo
