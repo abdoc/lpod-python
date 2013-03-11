@@ -27,7 +27,7 @@
 #
 
 # Import from the Standard Library
-from distutils import core
+from setuptools import setup
 from os import listdir
 from os.path import join
 from sys import executable
@@ -60,7 +60,7 @@ scripts = [ name for name in scripts if name in filenames ]
 # Make the python_path.txt file
 open('python_path.txt', 'w').write(executable)
 
-core.setup(
+setup(
 	description='lpOD Library',
 	license='GPLv3 + Apache v2',
 	name='lpod-python',
